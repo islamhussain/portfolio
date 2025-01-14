@@ -17,7 +17,17 @@
             color: #4CAF50;
             padding: 1.5rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             border-bottom: 2px solid #4CAF50;
+        }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 2px solid #4CAF50;
         }
         nav {
             display: flex;
@@ -38,27 +48,6 @@
             background-color: #4CAF50;
             color: #121212;
         }
-        .hero {
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(to right, #2e7d32, #388e3c);
-            color: white;
-        }
-        .hero img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 2px solid #4CAF50;
-        }
-        .hero h1 {
-            margin: 0;
-            font-size: 3rem;
-        }
-        .hero p {
-            margin: 1rem 0 0;
-            font-size: 1.5rem;
-        }
         .content {
             max-width: 900px;
             margin: 2rem auto;
@@ -67,13 +56,19 @@
             gap: 2rem;
         }
         .card {
-            background: #1e1e1e;
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
+        .card:nth-child(odd) {
+            background: #1e1e1e;
+        }
+        .card:nth-child(even) {
+            background: #4CAF50;
+            color: #121212;
+        }
         .card h2 {
-            color: #4CAF50;
+            color: inherit;
         }
         .skills {
             display: flex;
@@ -116,18 +111,15 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to My Portfolio</h1>
+        <img src="https://raw.githubusercontent.com/islamhussain/portfolio/main/assets/profile.jpg" alt="Profile Picture">
+        <h1 id="name"></h1>
+        <p>A passionate engineer and problem solver aiming to make an impact.</p>
     </header>
     <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
-    <div class="hero">
-        <img src="/mnt/data/image.png" alt="Profile Picture">
-        <h1 id="name"></h1>
-        <p>A passionate engineer and problem solver aiming to make an impact.</p>
-    </div>
     <section class="content">
         <div class="card" id="about">
             <h2>About Me</h2>
