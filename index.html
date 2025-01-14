@@ -8,7 +8,7 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Courier New', monospace;
+            font-family: 'Times New Roman', serif;
             background: url('assets/images/waves.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #333;
@@ -156,6 +156,57 @@
                 transform: translateX(0);
             }
         }
+
+        .projects-section {
+            padding: 4rem 2rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+        .projects-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+        .project-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .project-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+        .project-card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .project-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .project-card a:hover {
+            color: #00bfff;
+        }
     </style>
 </head>
 <body>
@@ -178,6 +229,11 @@
         </div>
     </div>
 
+    <div class="projects-section" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid" id="projects-grid"></div>
+    </div>
+
     <div class="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
     </div>
@@ -196,7 +252,27 @@
             skills: ["Python", "Java", "API Testing", "Selenium", "GitLab CI/CD", "SQL", "Docker", "Kubernetes"],
             github: "https://github.com/islamhussain",
             linkedin: "https://www.linkedin.com/in/islam-hussain-pathan/",
-            profileImage: "assets/images/profile.png"
+            profileImage: "assets/images/profile.png",
+            projects: [
+                {
+                    title: "Project One",
+                    description: "A brief description of Project One.",
+                    image: "assets/images/project1.jpg",
+                    link: "https://github.com/islamhussain/project-one"
+                },
+                {
+                    title: "Project Two",
+                    description: "A brief description of Project Two.",
+                    image: "assets/images/project2.jpg",
+                    link: "https://github.com/islamhussain/project-two"
+                },
+                {
+                    title: "Project Three",
+                    description: "A brief description of Project Three.",
+                    image: "assets/images/project3.jpg",
+                    link: "https://github.com/islamhussain/project-three"
+                }
+            ]
         };
 
         // Populate static content
@@ -211,6 +287,34 @@
             const listItem = document.createElement('li');
             listItem.textContent = skill;
             skillsList.appendChild(listItem);
+        });
+
+        // Populate projects
+        const projectsGrid = document.getElementById('projects-grid');
+        staticContent.projects.forEach(project => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+
+            const projectImage = document.createElement('img');
+            projectImage.src = project.image;
+            projectImage.alt = project.title;
+            projectCard.appendChild(projectImage);
+
+            const projectTitle = document.createElement('h3');
+            projectTitle.textContent = project.title;
+            projectCard.appendChild(projectTitle);
+
+            const projectDescription = document.createElement('p');
+            projectDescription.textContent = project.description;
+            projectCard.appendChild(projectDescription);
+
+            const projectLink = document.createElement('a');
+            projectLink.href = project.link;
+            projectLink.textContent = 'View Project';
+            projectLink.target = '_blank';
+            projectCard.appendChild(projectLink);
+
+            projectsGrid.appendChild(projectCard);
         });
 
         // Toggle menu visibility
