@@ -9,57 +9,97 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #121212;
+            color: #e0e0e0;
         }
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem;
+            background-color: #1f1f1f;
+            color: #4CAF50;
+            padding: 1.5rem;
             text-align: center;
+            border-bottom: 2px solid #4CAF50;
         }
         nav {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
         }
         nav a {
             text-decoration: none;
             color: #4CAF50;
             font-weight: bold;
+            padding: 0.5rem 1rem;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
         nav a:hover {
-            color: #333;
+            background-color: #4CAF50;
+            color: #121212;
         }
         .hero {
             text-align: center;
-            padding: 2rem;
-            background: linear-gradient(to right, #4CAF50, #81C784);
+            padding: 3rem;
+            background: linear-gradient(to right, #2e7d32, #388e3c);
             color: white;
         }
         .hero h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
         .hero p {
             margin: 1rem 0 0;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
         .content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 2rem auto;
-            padding: 1rem;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 2rem;
+            background: #1e1e1e;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .content h2 {
+            color: #4CAF50;
         }
         footer {
             text-align: center;
             padding: 1rem;
-            background-color: #333;
-            color: white;
+            background-color: #1f1f1f;
+            color: #4CAF50;
             margin-top: 2rem;
+            border-top: 2px solid #4CAF50;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .skills .skill {
+            background: #4CAF50;
+            color: #121212;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .cta {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .cta a {
+            text-decoration: none;
+            color: #121212;
+            background-color: #4CAF50;
+            padding: 0.75rem 2rem;
+            font-size: 1.25rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .cta a:hover {
+            background-color: #2e7d32;
         }
     </style>
 </head>
@@ -73,15 +113,41 @@
         <a href="#contact">Contact</a>
     </nav>
     <div class="hero">
-        <h1>Hi, I'm [Your Name]</h1>
+        <h1 id="name"></h1>
         <p>A passionate engineer and problem solver aiming to make an impact.</p>
     </div>
-    <section class="content">
+    <section class="content" id="about">
         <h2>About Me</h2>
-        <p>Welcome to my personal portfolio website. Here you can find details about my projects, skills, and experience in software engineering, automation, and artificial intelligence.</p>
+        <p id="about-text"></p>
+        <div class="skills" id="skills"></div>
     </section>
+    <div class="cta">
+        <a href="#projects">View My Projects</a>
+    </div>
     <footer>
-        <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+        <p>&copy; 2025 <span id="footer-name"></span>. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Load static content from a YAML-like object
+        const staticContent = {
+            name: "Your Name",
+            aboutText: "Welcome to my personal portfolio website. Here you can find details about my projects, skills, and experience in software engineering, automation, and artificial intelligence.",
+            skills: ["JavaScript", "Python", "Machine Learning", "Selenium", "API Testing"],
+        };
+
+        // Populate static content
+        document.getElementById('name').textContent = `Hi, I'm ${staticContent.name}`;
+        document.getElementById('about-text').textContent = staticContent.aboutText;
+        document.getElementById('footer-name').textContent = staticContent.name;
+
+        const skillsContainer = document.getElementById('skills');
+        staticContent.skills.forEach(skill => {
+            const skillElement = document.createElement('div');
+            skillElement.className = 'skill';
+            skillElement.textContent = skill;
+            skillsContainer.appendChild(skillElement);
+        });
+    </script>
 </body>
 </html>
