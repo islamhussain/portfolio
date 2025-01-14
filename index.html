@@ -8,7 +8,7 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Times New Roman', serif;
+            font-family: 'Courier New', monospace;
             background: url('assets/images/waves.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #333;
@@ -91,6 +91,10 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .hamburger.open {
+            transform: rotate(90deg);
         }
         .hamburger i {
             font-size: 2rem;
@@ -104,6 +108,14 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .menu.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
         .menu a {
             display: block;
@@ -112,12 +124,37 @@
             font-size: 1rem;
             transition: color 0.3s;
             padding: 0.5rem 0;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeIn 0.3s forwards;
+        }
+        .menu a:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .menu a:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .menu a:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .menu a:nth-child(4) {
+            animation-delay: 0.4s;
         }
         .menu a:not(:last-child) {
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
         .menu a:hover {
             color: #00bfff;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
@@ -179,10 +216,13 @@
         // Toggle menu visibility
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
+            const hamburger = document.querySelector('.hamburger');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                hamburger.classList.remove('open');
             } else {
-                menu.style.display = 'block';
+                menu.classList.add('show');
+                hamburger.classList.add('open');
             }
         }
     </script>
