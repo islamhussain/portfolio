@@ -35,10 +35,12 @@
         .profile-text h1 {
             font-size: 2.5rem;
             margin: 0 0 0.5rem;
+            font-weight: 700;
         }
         .profile-text p {
             margin: 0 0 1.5rem;
             color: #666;
+            font-weight: 400;
         }
         .profile-text ul {
             list-style: none;
@@ -48,6 +50,7 @@
         .profile-text ul li {
             font-size: 1.1rem;
             color: #555;
+            font-weight: 400;
         }
         .profile-image {
             flex: 0 0 150px;
@@ -57,6 +60,7 @@
             height: 150px;
             border-radius: 50%;
             border: 3px solid #333;
+            object-fit: cover;
         }
         .social-icons {
             display: flex;
@@ -77,27 +81,48 @@
     <div class="container">
         <section class="profile">
             <div class="profile-text">
-                <h1>Islam Hussain Pathan</h1>
-                <p>A passionate engineer and problem solver aiming to make an impact.</p>
-                <ul>
-                    <li>UI/UX</li>
-                    <li>Product Designer</li>
-                    <li>Web Design</li>
-                    <li>Front-End Developer</li>
-                </ul>
+                <h1 id="name"></h1>
+                <p id="tagline"></p>
+                <ul id="skills"></ul>
                 <div class="social-icons">
-                    <a href="https://github.com/islamhussain" target="_blank">
+                    <a id="github-link" href="#" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/islam-hussain-pathan/" target="_blank">
+                    <a id="linkedin-link" href="#" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
             </div>
             <div class="profile-image">
-                <img src="assets/images/profile.png" alt="Islam Hussain Pathan">
+                <img id="profile-image" src="#" alt="Profile Picture">
             </div>
         </section>
     </div>
+
+    <script>
+        // YAML-like data for static content
+        const staticContent = {
+            name: "Islam Hussain Pathan",
+            tagline: "Lead Engineer | SDET | Passionate about Quality and Automation",
+            skills: ["Python", "Java", "API Testing", "Selenium", "GitLab CI/CD", "SQL", "Docker", "Kubernetes"],
+            github: "https://github.com/islamhussain",
+            linkedin: "https://www.linkedin.com/in/islam-hussain-pathan/",
+            profileImage: "assets/images/profile.png"
+        };
+
+        // Populate static content
+        document.getElementById('name').textContent = staticContent.name;
+        document.getElementById('tagline').textContent = staticContent.tagline;
+        document.getElementById('profile-image').src = staticContent.profileImage;
+        document.getElementById('github-link').href = staticContent.github;
+        document.getElementById('linkedin-link').href = staticContent.linkedin;
+
+        const skillsList = document.getElementById('skills');
+        staticContent.skills.forEach(skill => {
+            const listItem = document.createElement('li');
+            listItem.textContent = skill;
+            skillsList.appendChild(listItem);
+        });
+    </script>
 </body>
 </html>
