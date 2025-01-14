@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #0d1117;
+            color: #c9d1d9;
             line-height: 1.6;
         }
         header {
-            background-color: #1f1f1f;
-            color: #4CAF50;
+            background-color: #161b22;
+            color: #58a6ff;
             padding: 2rem;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-bottom: 2px solid #4CAF50;
+            border-bottom: 2px solid #58a6ff;
         }
         header img {
             width: 180px;
             height: 180px;
             border-radius: 50%;
             margin-bottom: 1rem;
-            border: 4px solid #4CAF50;
+            border: 4px solid #58a6ff;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
         nav {
@@ -39,16 +40,16 @@
         }
         nav a {
             text-decoration: none;
-            color: #4CAF50;
+            color: #58a6ff;
             font-weight: bold;
             padding: 0.5rem 1.5rem;
-            border: 2px solid #4CAF50;
+            border: 2px solid #58a6ff;
             border-radius: 25px;
             transition: all 0.3s ease;
         }
         nav a:hover {
-            background-color: #4CAF50;
-            color: #121212;
+            background-color: #58a6ff;
+            color: #0d1117;
         }
         .content {
             max-width: 1200px;
@@ -64,16 +65,15 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
         .card:nth-child(odd) {
-            background: #1e1e1e;
+            background: #161b22;
         }
         .card:nth-child(even) {
-            background: #4CAF50;
-            color: #121212;
+            background: #21262d;
         }
         .card h2 {
             margin-bottom: 1rem;
             font-size: 1.8rem;
-            color: inherit;
+            color: #58a6ff;
         }
         .skills {
             display: flex;
@@ -82,25 +82,25 @@
             justify-content: center;
         }
         .skills .skill {
-            background: #333;
-            color: #4CAF50;
+            background: #21262d;
+            color: #58a6ff;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: bold;
-            border: 2px solid #4CAF50;
+            border: 2px solid #58a6ff;
             transition: all 0.3s ease;
         }
         .skills .skill:hover {
-            background: #4CAF50;
-            color: #121212;
+            background: #58a6ff;
+            color: #0d1117;
         }
         footer {
             text-align: center;
             padding: 1.5rem;
-            background-color: #1f1f1f;
-            color: #4CAF50;
+            background-color: #161b22;
+            color: #58a6ff;
             margin-top: 2rem;
-            border-top: 2px solid #4CAF50;
+            border-top: 2px solid #58a6ff;
         }
         .cta {
             text-align: center;
@@ -108,8 +108,8 @@
         }
         .cta a {
             text-decoration: none;
-            color: #121212;
-            background-color: #4CAF50;
+            color: #0d1117;
+            background-color: #58a6ff;
             padding: 1rem 2.5rem;
             font-size: 1.5rem;
             border-radius: 30px;
@@ -117,16 +117,39 @@
             transition: all 0.3s ease;
         }
         .cta a:hover {
-            background-color: #2e7d32;
+            background-color: #1e90ff;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .social-links a {
+            text-decoration: none;
+            color: #58a6ff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #1e90ff;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="assets/images/profile.png" alt="Profile Picture">
+        <img src="/mnt/data/image.png" alt="Profile Picture">
         <h1 id="name"></h1>
-        <p>A passionate engineer and problem solver aiming to make an impact.</p>
+        <p id="tagline"></p>
+        <div class="social-links">
+            <a id="github-link" href="#" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a id="linkedin-link" href="#" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
     </header>
     <nav>
         <a href="#about">About</a>
@@ -147,21 +170,28 @@
         <a href="#projects">View My Projects</a>
     </div>
     <footer>
-        <p>&copy; 2025 <span id="footer-name"></span>. All rights reserved.</p>
+        <p id="footer-text"></p>
     </footer>
 
     <script>
-        // Load static content from a YAML-like object
+        // YAML-like static content
         const staticContent = {
-            name: "Your Name",
+            name: "Islam Hussain Pathan",
+            tagline: "A passionate engineer and problem solver aiming to make an impact.",
+            github: "https://github.com/islamhussain",
+            linkedin: "https://www.linkedin.com/in/islam-hussain-pathan/",
             aboutText: "Welcome to my personal portfolio website. Here you can find details about my projects, skills, and experience in software engineering, automation, and artificial intelligence.",
             skills: ["JavaScript", "Python", "Machine Learning", "Selenium", "API Testing"],
+            footerText: "© 2025 Islam Hussain Pathan. All rights reserved."
         };
 
         // Populate static content
-        document.getElementById('name').textContent = `Hi, I'm ${staticContent.name}`;
+        document.getElementById('name').textContent = staticContent.name;
+        document.getElementById('tagline').textContent = staticContent.tagline;
+        document.getElementById('github-link').href = staticContent.github;
+        document.getElementById('linkedin-link').href = staticContent.linkedin;
         document.getElementById('about-text').textContent = staticContent.aboutText;
-        document.getElementById('footer-name').textContent = staticContent.name;
+        document.getElementById('footer-text').textContent = staticContent.footerText;
 
         const skillsContainer = document.getElementById('skills');
         staticContent.skills.forEach(skill => {
