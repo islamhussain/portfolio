@@ -216,6 +216,23 @@
         .project-card a:hover {
             color: #00bfff;
         }
+        .resume-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: #0073e6;
+            color: #fff;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .resume-btn:hover {
+            background-color: #005bb5;
+            transform: translateY(-3px);
+        }
+
     </style>
 </head>
 <body>
@@ -224,6 +241,7 @@
             <h1 id="name"></h1>
             <p id="tagline"></p>
             <ul id="skills"></ul>
+            <a id="resume-download" href="assets/files/Islam_Hussain_Resume.pdf" download class="resume-btn">Download Resume</a>
         </div>
         <div class="profile-image-container">
             <img id="profile-image" class="profile-image" src="#" alt="Profile Picture">
