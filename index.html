@@ -250,7 +250,7 @@
             <h1 id="name"></h1>
             <p id="tagline"></p>
             <ul id="skills"></ul>
-            <a id="resume-download" href="assets/files/Islam_Hussain_Resume.pdf" download class="resume-btn">Download Resume</a>
+            <a id="resume-download" href="#" download class="resume-btn">Download Resume</a>
         </div>
         <div class="profile-image-container">
             <img id="profile-image" class="profile-image" src="#" alt="Profile Picture">
@@ -277,7 +277,7 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <a href="assets/files/Islam_Hussain_Resume.pdf" download>
+        <a href="#" download id="resume-download-menu">
             <i class="fas fa-download"></i> Download Resume
         </a>
     </div>
@@ -291,6 +291,7 @@
             github: "https://github.com/islamhussain",
             linkedin: "https://www.linkedin.com/in/islam-hussain-pathan/",
             profileImage: "assets/images/profile.png",
+            resumeLink: "https://flowcv.com/resume/vbnb74eurf",
             projects: [
                 {
                     title: "Sauce Demo",
@@ -310,6 +311,8 @@
         document.getElementById('profile-image').src = staticContent.profileImage;
         document.getElementById('github-link').href = staticContent.github;
         document.getElementById('linkedin-link').href = staticContent.linkedin;
+        document.getElementById('resume-download').href = staticContent.resumeLink;
+        document.getElementById('resume-download-menu').href = staticContent.resumeLink;
         
         // Populate the sorted skills
         const skillsList = document.getElementById('skills');
