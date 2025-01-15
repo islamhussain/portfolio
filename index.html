@@ -47,9 +47,10 @@
             padding: 0;
             margin: 0;
             list-style: none;
-            max-height: 150px; 
-            overflow-y: auto; 
+            max-height: 150px; /* Set max height */
+            overflow-y: auto; /* Enable vertical scrolling if needed */
         }
+        
         .profile-text ul li {
             font-size: 1rem;
             color: #8ca1af;
@@ -142,6 +143,9 @@
         .menu a:nth-child(3) {
             animation-delay: 0.3s;
         }
+        .menu a:nth-child(4) {
+            animation-delay: 0.4s;
+        }
         .menu a:not(:last-child) {
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
@@ -159,7 +163,84 @@
             }
         }
 
-        .contact-section {
+        .projects-section {
+            padding: 4rem 2rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+        .projects-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+        .project-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #0073e6;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        .project-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+        .project-card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .project-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .project-card a:hover {
+            color: #00bfff;
+        }
+        .resume-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: #0073e6;
+            color: #fff;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .resume-btn:hover {
+            background-color: #005bb5;
+            transform: translateY(-3px);
+        }
+        .menu a:last-child {
+            font-weight: bold;
+            color: #0073e6;
+        }
+        
+        .menu a:last-child:hover {
+            color: #00bfff;
+        }
+         .contact-section {
             padding: 4rem 2rem;
             background-color: rgba(0, 0, 0, 0.8);
             color: #fff;
@@ -209,16 +290,46 @@
             background-color: #005bb5;
             transform: translateY(-3px);
         }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Profile Section -->
+        <div class="profile-text">
+            <h1 id="name"></h1>
+            <p id="tagline"></p>
+            <ul id="skills"></ul>
+        </div>
+        <div class="profile-image-container">
+            <img id="profile-image" class="profile-image" src="#" alt="Profile Picture">
+            <div class="social-icons">
+                <a id="github-link" href="#" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="linkedin-link" href="#" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <div class="contact-section" id="contact">
+    <div class="projects-section" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid" id="projects-grid"></div>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu" id="menu">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#" download id="resume-download-menu">Resume</a>
+    </div>
+     <div class="contact-section" id="contact">
         <h2>Contact Me</h2>
-        <form class="contact-form" action="https://formspree.io/f/xbllbylp" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
             
@@ -241,12 +352,86 @@
         <a href="#contact">Contact</a>
     </div>
 
+
     <script>
+        // YAML-like data for static content
+        const staticContent = {
+            name: "Islam Hussain Pathan",
+            tagline: "Lead Engineer | SDET | Passionate about Quality and Automation",
+            skills: ["Python", "Java", "API Testing", "Selenium", "GitLab CI/CD", "SQL", "Docker", "Kubernetes", "Jenkins", "jmeter", "TestNG", "Pytest"],
+            github: "https://github.com/islamhussain",
+            linkedin: "https://www.linkedin.com/in/islam-hussain-pathan/",
+            profileImage: "assets/images/profile.png",
+            resumeLink: "https://flowcv.com/resume/vbnb74eurf",
+            projects: [
+                {
+                    title: "Sauce Demo",
+                    description: "This framework is designed for automated testing of the Swag Labs application using Selenium WebDriver with PyTest. It supports data-driven testing, cross-browser testing, headless mode, and detailed reporting.",
+                    image: "assets/images/project1.png",
+                    link: "https://github.com/islamhussain/saucedemo"
+                }
+            ]
+        };
+        
+        // Sort the skills array lexicographically
+        staticContent.skills.sort();
+        
+        // Populate static content
+        document.getElementById('name').textContent = staticContent.name;
+        document.getElementById('tagline').textContent = staticContent.tagline;
+        document.getElementById('profile-image').src = staticContent.profileImage;
+        document.getElementById('github-link').href = staticContent.github;
+        document.getElementById('linkedin-link').href = staticContent.linkedin;
+        document.getElementById('resume-download-menu').href = staticContent.resumeLink;
+        
+        // Populate the sorted skills
+        const skillsList = document.getElementById('skills');
+        staticContent.skills.forEach(skill => {
+            const listItem = document.createElement('li');
+            listItem.textContent = skill;
+            skillsList.appendChild(listItem);
+        });
+
+
+        // Populate projects
+        const projectsGrid = document.getElementById('projects-grid');
+        staticContent.projects.forEach(project => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+
+            const projectImage = document.createElement('img');
+            projectImage.src = project.image;
+            projectImage.alt = project.title;
+            projectCard.appendChild(projectImage);
+
+            const projectTitle = document.createElement('h3');
+            projectTitle.textContent = project.title;
+            projectCard.appendChild(projectTitle);
+
+            const projectDescription = document.createElement('p');
+            projectDescription.textContent = project.description;
+            projectCard.appendChild(projectDescription);
+
+            const projectLink = document.createElement('a');
+            projectLink.href = project.link;
+            projectLink.textContent = 'View Project';
+            projectLink.target = '_blank';
+            projectCard.appendChild(projectLink);
+
+            projectsGrid.appendChild(projectCard);
+        });
+
+        // Toggle menu visibility
         function toggleMenu() {
             const menu = document.getElementById('menu');
             const hamburger = document.querySelector('.hamburger');
-            menu.classList.toggle('show');
-            hamburger.classList.toggle('open');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                hamburger.classList.remove('open');
+            } else {
+                menu.classList.add('show');
+                hamburger.classList.add('open');
+            }
         }
     </script>
 </body>
