@@ -352,17 +352,16 @@
         <a href="#contact">Contact</a>
         <a href="#" download id="resume-download-menu">Resume</a>
     </div>
-     <div class="contact-section" id="contact">
-        <h2>Contact Me</h2>
-        <form class="contact-form" action="https://formspree.io/f/xbllbylp" method="POST">
+    <div class="contact-form-container">
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xbllbylp" method="post">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
             
             <label for="email">Email</label>
-            <input type="email" id="email" name="_replyto" placeholder="Your Email" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
             
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             
             <button type="submit">Send Message</button>
         </form>
@@ -445,6 +444,12 @@
 
             projectsGrid.appendChild(projectCard);
         });
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+            alert('Your message has been sent successfully!'); // Optional: Add a success message
+            this.reset(); // Reset all form fields
+        });
+
 
         // Toggle menu visibility
         function toggleMenu() {
