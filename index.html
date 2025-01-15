@@ -271,20 +271,25 @@
                 }
             ]
         };
-
+        
+        // Sort the skills array lexicographically
+        staticContent.skills.sort();
+        
         // Populate static content
         document.getElementById('name').textContent = staticContent.name;
         document.getElementById('tagline').textContent = staticContent.tagline;
         document.getElementById('profile-image').src = staticContent.profileImage;
         document.getElementById('github-link').href = staticContent.github;
         document.getElementById('linkedin-link').href = staticContent.linkedin;
-
+        
+        // Populate the sorted skills
         const skillsList = document.getElementById('skills');
         staticContent.skills.forEach(skill => {
             const listItem = document.createElement('li');
             listItem.textContent = skill;
             skillsList.appendChild(listItem);
         });
+
 
         // Populate projects
         const projectsGrid = document.getElementById('projects-grid');
