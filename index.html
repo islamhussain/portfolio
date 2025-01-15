@@ -250,7 +250,6 @@
             <h1 id="name"></h1>
             <p id="tagline"></p>
             <ul id="skills"></ul>
-            <a id="resume-download" href="#" download class="resume-btn">Download Resume</a>
         </div>
         <div class="profile-image-container">
             <img id="profile-image" class="profile-image" src="#" alt="Profile Picture">
@@ -277,9 +276,7 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <a href="#" download id="resume-download-menu">
-            <i class="fas fa-download"></i> Download Resume
-        </a>
+        <a href="#" download id="resume-download-menu">Resume</a>
     </div>
 
     <script>
@@ -311,7 +308,6 @@
         document.getElementById('profile-image').src = staticContent.profileImage;
         document.getElementById('github-link').href = staticContent.github;
         document.getElementById('linkedin-link').href = staticContent.linkedin;
-        document.getElementById('resume-download').href = staticContent.resumeLink;
         document.getElementById('resume-download-menu').href = staticContent.resumeLink;
         
         // Populate the sorted skills
