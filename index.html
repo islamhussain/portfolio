@@ -239,29 +239,15 @@
         
         .menu a:last-child:hover {
             color: #00bfff;
-        }
-        .contact-section {
-            padding: 4rem 2rem;
-            background-color: rgba(0, 0, 0, 0.85); /* Darker background for better contrast */
-            color: #fff;
-        }
-        
-        .contact-section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-        }
-        
-        .contact-form {
+        }.contact-form {
             max-width: 600px;
+            width: 100%; /* Ensure it fits within the container */
             margin: 0 auto;
-            background-color: rgba(21, 32, 43, 0.95); /* Enhanced card color for better focus */
+            background-color: rgba(21, 32, 43, 0.95); /* Enhanced card color */
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+            overflow: hidden; /* Prevent content from going outside the card */
         }
         
         .contact-form label {
@@ -276,7 +262,7 @@
         
         .contact-form input,
         .contact-form textarea {
-            width: 100%;
+            width: 100%; /* Ensure it spans within the card */
             padding: 1rem;
             margin-bottom: 1.5rem;
             border: 1px solid #0073e6;
@@ -295,9 +281,14 @@
             outline: none;
         }
         
+        .contact-form textarea {
+            resize: none; /* Prevent resizing for consistent design */
+            height: 150px; /* Fixed height for better alignment */
+        }
+        
         .contact-form button {
             display: block;
-            width: 100%;
+            width: 100%; /* Button spans the card width */
             padding: 1rem;
             border: none;
             border-radius: 8px;
@@ -322,6 +313,7 @@
             transform: translateY(1px);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
+
 
 
     </style>
