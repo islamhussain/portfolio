@@ -183,18 +183,6 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-        }
         .project-card img {
             width: 100px;
             height: 100px;
@@ -220,22 +208,6 @@
         }
         .project-card a:hover {
             color: #00bfff;
-        }
-        .resume-btn {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background-color: #0073e6;
-            color: #fff;
-            font-size: 1rem;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        
-        .resume-btn:hover {
-            background-color: #005bb5;
-            transform: translateY(-3px);
         }
         .menu a:last-child {
             font-weight: bold;
@@ -372,7 +344,7 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
             
-            <button type="submit">Send Message</button>
+            <button type="submit">Send</button>
         </form>
     </div>
 
