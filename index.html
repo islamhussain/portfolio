@@ -335,6 +335,14 @@
         .send-button:active {
             transform: translateY(1px);
         }
+        .section-divider {
+            width: 80%; /* Adjust the width to your preference */
+            height: 2px; /* Thickness of the line */
+            background-color: rgba(255, 255, 255, 0.2); /* Subtle color */
+            margin: 2rem auto; /* Center it and add spacing around it */
+            border-radius: 1px; /* Rounded edges for a polished look */
+        }
+
     </style>
 </head>
 <body>
@@ -371,6 +379,7 @@
         <a href="#contact">Contact</a>
         <a href="#" download id="resume-download-menu">Resume</a>
     </div>
+    <div class="section-divider"></div>
     <div class="contact-section" id="contact">
         <h2>Contact Me</h2>
         <form class="contact-form" action="https://formspree.io/f/xbllbylp" method="POST">
@@ -421,6 +430,12 @@
                     description: "This framework is designed for automated testing of the Swag Labs application using Selenium WebDriver with PyTest. It supports data-driven testing, cross-browser testing, headless mode, and detailed reporting.",
                     image: "assets/images/project1.png",
                     link: "https://github.com/islamhussain/saucedemo"
+                },
+                {
+                    title: "Coding problems",
+                    description: "This repo contains the coding problems that I generally face during coding interviews",
+                    image: "assets/images/project2.png",
+                    link: "https://github.com/islamhussain/coding_problems"
                 }
             ]
         };
