@@ -94,7 +94,7 @@
         }
         .hamburger {
             position: fixed;
-            bottom: 1rem;
+            top: 1rem;
             right: 1rem;
             width: 60px;
             height: 60px;
@@ -117,7 +117,7 @@
         }
         .menu {
             position: fixed;
-            bottom: 5rem;
+            top: 5rem;
             right: 1rem;
             background-color: rgba(0, 21, 41, 0.95);
             padding: 1rem;
@@ -405,7 +405,7 @@
         </form>
     </div>
 
-    <div class="hamburger" onclick="toggleMenu()">
+    <div class="hamburger" id = "hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
     </div>
     <div class="menu" id="menu">
@@ -498,7 +498,7 @@
         // Toggle menu visibility
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            const hamburger = document.querySelector('.hamburger');
+            const hamburger = document.getElementById('hamburger');
             if (menu.classList.contains('show')) {
                 menu.classList.remove('show');
                 hamburger.classList.remove('open');
