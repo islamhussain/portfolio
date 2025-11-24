@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master data structures and algorithms interviews with this comprehensive cheat sheet. Learn pattern recognition, time complexity analysis, and solutions to 28 common coding problems.">
+    <title>Decoding Data Structures Interviews: The Ultimate Problem Recognition Cheat Sheet | Islam Hussain Pathan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary-color: #06b6d4;
+            --accent-color: #f59e0b;
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Blog Post Container */
+        .blog-post-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-light);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-light);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .blog-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .blog-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .blog-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-content h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .code-block {
+            background: var(--bg-darker);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            white-space: pre;
+        }
+
+        /* Markdown content styling */
+        .markdown-content {
+            color: var(--text-secondary);
+        }
+
+        .markdown-content pre {
+            background: var(--bg-darker);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .markdown-content pre code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+        }
+
+        .markdown-content code {
+            background: var(--bg-darker);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--primary-light);
+        }
+
+        .markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .markdown-content table th,
+        .markdown-content table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .markdown-content table th {
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .markdown-content hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 3rem 0;
+        }
+
+        .markdown-content blockquote {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .loading i {
+            font-size: 2rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .problem-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .problem-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .problem-meta span {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+        }
+
+        .pattern-badge {
+            background: rgba(6, 182, 212, 0.2);
+            color: var(--secondary-color);
+        }
+
+        .complexity-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .complexity-item {
+            background: var(--bg-darker);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .complexity-item strong {
+            color: var(--primary-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .ds-reference {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .ds-reference h4 {
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        .ds-reference ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ds-reference li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ds-reference li:last-child {
+            border-bottom: none;
+        }
+
+        .ds-reference code {
+            color: var(--primary-light);
+            background: var(--bg-darker);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 300px;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-post-container {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .blog-image {
+                height: 250px;
+            }
+
+            .blog-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .blog-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .complexity-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">IHP</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post-container">
+        <a href="../index.html#blog" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+
+        <header class="blog-header">
+            <div class="blog-tags">
+                <span class="blog-tag">Data Structures</span>
+                <span class="blog-tag">Algorithms</span>
+                <span class="blog-tag">Interview Prep</span>
+                <span class="blog-tag">Coding Interviews</span>
+            </div>
+            <h1 class="blog-title">Decoding Data Structures Interviews: The Ultimate Problem Recognition Cheat Sheet</h1>
+            <div class="blog-meta">
+                <span><i class="far fa-user"></i> Islam Hussain Pathan</span>
+                <span><i class="far fa-calendar"></i> November 24, 2025</span>
+                <span><i class="far fa-clock"></i> 15 min read</span>
+            </div>
+        </header>
+
+        <div class="blog-image">
+            💻
+        </div>
+
+        <div class="blog-content">
+            <p>
+                Data structures and algorithms interviews can be intimidating, but they don't have to be. The key to success isn't memorizing every solution—it's recognizing patterns and knowing which approach to apply. After years of preparing for and conducting technical interviews, I've compiled this comprehensive cheat sheet to help you decode any DS&A problem you encounter.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>💡 Key Insight:</strong> Most coding interview problems fall into recognizable patterns. Once you identify the pattern, the solution becomes much clearer. This cheat sheet provides pattern recognition rules and solutions for 28 common problems, each with its solution immediately following for ultra-fast revision.
+                </p>
+            </div>
+
+            <div id="markdown-content" class="markdown-content">
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading cheat sheet content...</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+            <a href="../index.html#blog" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+        </div>
+    </article>
+
+    <script>
+        // Configure marked.js for code highlighting
+        if (typeof marked !== 'undefined') {
+            marked.setOptions({
+                highlight: function(code, lang) {
+                    if (lang && typeof hljs !== 'undefined') {
+                        try {
+                            return hljs.highlight(code, { language: lang }).value;
+                        } catch (err) {
+                            return hljs.highlightAuto(code).value;
+                        }
+                    }
+                    return code;
+                },
+                breaks: true,
+                gfm: true
+            });
+        }
+
+        // Load and render markdown content
+        async function loadMarkdownContent() {
+            const contentDiv = document.getElementById('markdown-content');
+            if (!contentDiv) return;
+
+            // Check if we're running on file:// protocol (CORS issue)
+            if (window.location.protocol === 'file:') {
+                contentDiv.innerHTML = `
+                    <div class="highlight-box">
+                        <p style="color: #f59e0b;">
+                            <strong>⚠️ Local File Protocol Detected</strong><br>
+                            This page needs to be served from a web server due to browser security restrictions (CORS).<br><br>
+                            <strong>Quick Solutions:</strong><br>
+                            1. <strong>Python:</strong> Run <code>python3 -m http.server 8000</code> in the project root, then visit <code>http://localhost:8000/blog/ds-interview-cheatsheet.html</code><br>
+                            2. <strong>Node.js:</strong> Run <code>npx http-server</code> in the project root<br>
+                            3. <strong>VS Code:</strong> Use the "Live Server" extension<br>
+                            4. <strong>Deploy:</strong> Upload to GitHub Pages or any web hosting service
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                // Load the markdown file
+                const markdownPath = '../assets/md_files/problem_recognition_cheatsheet.md';
+                const response = await fetch(markdownPath);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const markdown = await response.text();
+                
+                // Convert markdown to HTML
+                if (typeof marked !== 'undefined') {
+                    const html = marked.parse(markdown);
+                    contentDiv.innerHTML = html;
+                } else {
+                    // Fallback if marked.js didn't load
+                    contentDiv.innerHTML = '<p style="color: var(--text-muted);">Markdown parser not loaded. Please refresh the page.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading markdown:', error);
+                const isNetworkError = error.message.includes('Failed to fetch') || error.message.includes('NetworkError');
+                const errorMessage = isNetworkError 
+                    ? 'Network error - This usually means the file cannot be accessed due to CORS restrictions. Please use a local web server.'
+                    : error.message;
+                
+                contentDiv.innerHTML = `
+                    <div class="highlight-box">
+                        <p style="color: #ef4444;">
+                            <strong>Error loading content:</strong> ${errorMessage}<br><br>
+                            <strong>File path:</strong> <code>${window.location.protocol === 'file:' ? 'file://' : ''}../assets/md_files/problem_recognition_cheatsheet.md</code><br><br>
+                            <strong>Please ensure:</strong><br>
+                            1. The markdown file exists at the correct path<br>
+                            2. You're accessing this page through a web server (not file:// protocol)<br>
+                            3. The server allows CORS requests
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        // Load content when page is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadMarkdownContent);
+        } else {
+            loadMarkdownContent();
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
